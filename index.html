@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TaskMate — Student To-Do List</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app">
+    <header class="header">
+      <div>
+        <p class="eyebrow">STUDENT PLANNER</p>
+        <h1>TaskMate <span>✓</span></h1>
+        <p class="subtitle">Plan your day, one task at a time.</p>
+      </div>
+      <div class="date-chip" id="todayLabel">Your schedule</div>
+    </header>
+
+    <section class="composer card" aria-labelledby="addTaskHeading">
+      <h2 id="addTaskHeading">Add a task</h2>
+      <form id="taskForm">
+        <label for="taskTitle">Task name</label>
+        <input id="taskTitle" name="taskTitle" type="text" maxlength="140"
+               placeholder="e.g. Finish maths homework" required>
+
+        <div class="field-grid">
+          <div>
+            <label for="taskDate">Due date</label>
+            <input id="taskDate" name="taskDate" type="date" required>
+          </div>
+          <div>
+            <label for="taskTime">Due time</label>
+            <input id="taskTime" name="taskTime" type="time" required>
+          </div>
+        </div>
+
+        <div class="field-grid">
+          <div>
+            <label for="taskPriority">Priority</label>
+            <select id="taskPriority" name="taskPriority">
+              <option value="low">Low</option>
+              <option value="medium" selected>Medium</option>
+              <option value="high">High</option>
+            </select>
+          </div>
+          <div>
+            <label for="taskCategory">Subject / category</label>
+            <input id="taskCategory" name="taskCategory" type="text" maxlength="50"
+                   placeholder="e.g. Science">
+          </div>
+        </div>
+
+        <button class="primary-btn" type="submit">+ Add task</button>
+      </form>
+    </section>
+
+    <section class="toolbar" aria-label="Task filters">
+      <div>
+        <h2>Your tasks <span id="taskCount" class="count">0</span></h2>
+        <p class="muted" id="taskSummary">Stay on top of your schedule.</p>
+      </div>
+      <div class="filters">
+        <label class="sr-only" for="filterStatus">Filter tasks</label>
+        <select id="filterStatus">
+          <option value="all">All tasks</option>
+          <option value="upcoming">Upcoming</option>
+          <option value="overdue">Overdue</option>
+          <option value="completed">Completed</option>
+        </select>
+        <label class="sr-only" for="sortTasks">Sort tasks</label>
+        <select id="sortTasks">
+          <option value="date-asc">Soonest due</option>
+          <option value="date-desc">Latest due</option>
+          <option value="priority">Priority</option>
+          <option value="created">Recently added</option>
+        </select>
+      </div>
+    </section>
+
+    <section id="taskList" class="task-list" aria-live="polite"></section>
+    <p id="emptyState" class="empty-state card">No tasks here yet. Add a task with its due date and time to get started.</p>
+    <footer>Tasks are saved in this browser on this device.</footer>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
